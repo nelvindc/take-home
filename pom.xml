@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.quantrics</groupId>
 	<artifactId>take-home</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>latest</version>
 	<name>take-home</name>
 	<description>Demo project for Quantrics</description>
 	<properties>
