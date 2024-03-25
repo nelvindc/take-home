@@ -20,7 +20,7 @@ public class OpenNotifyAdapter {
 		this.webClient = webClientBuilder.baseUrl("http://api.open-notify.org").build();
 	}
 
-	public OpenNotify getIssLocation() {
+	public OpenNotify getIssLocation() throws Exception{
 		return this.webClient.get().uri("/iss-now.json")
 				.retrieve().bodyToMono(OpenNotify.class).block();
 	}

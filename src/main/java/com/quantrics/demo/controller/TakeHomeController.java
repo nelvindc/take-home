@@ -27,8 +27,16 @@ public class TakeHomeController {
 	@GetMapping("/track")
 	public ResponseEntity<TrackResult> getTrackPlaces() {
 		TrackResult result = new TrackResult();
-		result = takeHomeService.getTrackPlaces();
-		return new ResponseEntity<>(result, HttpStatus.OK);
+		try {
+			result = takeHomeService.getTrackPlaces();
+			return new ResponseEntity<>(result, HttpStatus.OK);
+			
+		} catch (Exception e) {
+
+			log.error("Exception in myEndpoint:", e);
+			result.setMessage("An error occurred.");
+			return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 

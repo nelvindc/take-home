@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.quantrics.demo.model.MediaWiki;
 
-import reactor.core.publisher.Mono;
+
 
 @Component
 public class MediaWikiAdapter {
@@ -19,12 +19,7 @@ public class MediaWikiAdapter {
 		this.webClient = webClientBuilder.baseUrl("https://en.wikipedia.org").build();
 	}
 
-	public Mono<String> someRestCall(String name) {
-		return this.webClient.get().uri("/sample", name)
-				.retrieve().bodyToMono(String.class);
-	}
-
-	public MediaWiki getPlaces(String latitude, String longitude) {
+	public MediaWiki getPlaces(String latitude, String longitude) throws Exception {
 
 		StringBuffer coordinates = new StringBuffer(latitude);
 		coordinates.append("|");
@@ -37,8 +32,7 @@ public class MediaWikiAdapter {
 				.queryParam("list", "geosearch")
 				.queryParam("gsradius", "10000")
 				.queryParam("gslimit", "10")
-				//.queryParam("gscoord", "37.786971|-122.399677")
-				//.queryParam("gscoord", "15.8700|100.9925")
+				//.queryParam("gscoord", "37.786971|-122.399677") // test coordinates
 				.queryParam("gscoord", coordinates.toString())
 				.queryParam("gsprop", "country")
 				.queryParam("format", "json")

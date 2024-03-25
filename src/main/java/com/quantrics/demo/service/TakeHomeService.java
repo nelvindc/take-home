@@ -28,7 +28,7 @@ public class TakeHomeService {
 	@Autowired
 	private MediaWikiAdapter mediaWikiAdapter;
 
-	public TrackResult getTrackPlaces() {
+	public TrackResult getTrackPlaces() throws Exception{
 		
 		OpenNotify openNotify = openNotifyAdapter.getIssLocation();
 
